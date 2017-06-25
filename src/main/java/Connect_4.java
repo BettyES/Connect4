@@ -173,21 +173,19 @@ public class Connect_4 {
         int start = column;
         boolean startFound = false;
         for(int num=0;num<4;num++){
-            if(j+num<myframe[0].length){
+            if(j+num<myframe[0].length && !startFound){
                 System.out.println("ha" +num);
-                if(j+num==myframe[0].length-1 && !startFound || myframe[i][j+num+1]!=playernr && !startFound){
-                    System.out.println("he?"+ num+" " +start+" Found "+!startFound);
+                System.out.println(j+num);
+                System.out.println(myframe[0].length);
+                if(j+num==myframe[0].length-1 || myframe[i][j+num+1]!=playernr ){
                     start += num;
                     startFound = true;
                 }
-            }
-        }
+            }}
+
 
         for(int num=0;num<4;num++){
             if(start-num>=0){
-                System.out.println(start-num);
-                System.out.println("Num = " + num);
-                System.out.println("Start = "+start);
                 if(myframe[i][start-num]==playernr){
                     sum+= myframe[i][start-num];
                     System.out.println("SUM "+sum);
