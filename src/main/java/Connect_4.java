@@ -55,7 +55,7 @@ public class Connect_4 {
         addChipPlayer1(column);
         evaluateGameStatusColumn(column,1);
         evaluateGameStatusRows(column,1);
-        evaluateGameStatusDiagonal(column, 1);
+        //evaluateGameStatusDiagonal(column, 1);
         drawOutput();
     }
 
@@ -78,7 +78,7 @@ public class Connect_4 {
         addChipPlayer2(column);
         evaluateGameStatusColumn(column,2);
         evaluateGameStatusRows(column,2);
-        evaluateGameStatusDiagonal(column, 2);
+        //evaluateGameStatusDiagonal(column, 2);
         drawOutput();
     }
 
@@ -132,32 +132,7 @@ public class Connect_4 {
      */
 
     public static void evaluateGameStatusDiagonal(int column,int playernr){
-        int sum = 0;
-        int i=latestRow;
-        int j =column;
-        while(i>-1 &j<myframe[0].length){
-            if(myframe[i][j]==playernr){
-            sum+=myframe[i][j];}
-            i--;
-            j++;
-            }
-        int z=latestRow+1;
-        int y =column-1;
-        while(z<myframe.length &y>-1){
-            if(myframe[z][y]==playernr){
-            sum+=myframe[z][y];}
-            z++;
-            y--;
-        }
-        if(playernr==1){
-            if(sum==4) {
-                gameStatus = "winner";
-            }
-        }else{
-            if(sum==8){
-                gameStatus =  "winner";
-            }
-        }
+
     }
 
     /**
