@@ -131,36 +131,8 @@ public class Connect_4 {
      * @param playernr is the player number
      */
 
-    public static void evaluateGameStatusDiagonal(int column,int playernr){
-        int sum = 0;
-        int i=latestRow;
-        int j =column;
-        while(i>-1 &j<myframe[0].length){
-            if(myframe[i][j]==playernr){
-            sum+=myframe[i][j];}
-            i--;
-            j++;
-            }
-        int z=latestRow+1;
-        int y =column-1;
-        while(z<myframe.length &y>-1){
-            if(myframe[z][y]==playernr){
-            sum+=myframe[z][y];}
-            z++;
-            y--;
-        }
-        if(playernr==1){
-            if(sum==4) {
-                gameStatus = "winner";
-            }
-        }else{
-            if(sum==8){
-                gameStatus =  "winner";
-            }
-        }
-    }
 
-    public static void evaluateGameStatusDiag(int column,int playernr){
+    public static void evaluateGameStatusDiagonal(int column,int playernr){
         int i = latestRow;
         int j = column;
         int sum = 0;
