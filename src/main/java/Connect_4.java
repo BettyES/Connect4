@@ -13,7 +13,7 @@ public class Connect_4 {
 
     public static void main(String[] args){
         gameStatus="not yet";
-        myframe= new int[4][4];
+        myframe= new int[6][7];
         commsWelcome();
         Scanner in=new Scanner(System.in);
         int round=1;
@@ -174,9 +174,9 @@ public class Connect_4 {
         boolean startFound = false;
         for(int num=0;num<4;num++){
             if(j+num<myframe[0].length){
-                System.out.println("ha");
-                if(j+num==myframe[0].length-1 || myframe[i][j+num+1]!=playernr && !startFound){
-                    System.out.println("he?");
+                System.out.println("ha" +num);
+                if(j+num==myframe[0].length-1 && !startFound || myframe[i][j+num+1]!=playernr && !startFound){
+                    System.out.println("he?"+ num+" " +start+" Found "+!startFound);
                     start += num;
                     startFound = true;
                 }
@@ -186,6 +186,8 @@ public class Connect_4 {
         for(int num=0;num<4;num++){
             if(start-num>=0){
                 System.out.println(start-num);
+                System.out.println("Num = " + num);
+                System.out.println("Start = "+start);
                 if(myframe[i][start-num]==playernr){
                     sum+= myframe[i][start-num];
                     System.out.println("SUM "+sum);
@@ -219,7 +221,7 @@ public class Connect_4 {
         for(int num=0;num<4;num++){
             if(i+num<myframe.length){
             if(myframe[i+num][j]==playernr){
-                sum+= myframe[i+num][j];
+                sum+= myframe[i+num][j];//issue if there is a  2 in between he will still continue to count
             }}
         }
         if(playernr==1){
@@ -277,12 +279,12 @@ public class Connect_4 {
      */
 
     public static void drawOutput(){
-        System.out.println(" --- --- --- ---");
+        System.out.println(" --- --- --- --- --- --- ---");
         for(int i=0;i<myframe.length;i++){
             for(int j=0;j<myframe[0].length;j++){
                 System.out.print("| "+myframe[i][j]+" ");
             }System.out.println("|");
-            System.out.println(" --- --- --- ---");
+            System.out.println(" --- --- --- --- --- --- ---");
         }
     }
 }
