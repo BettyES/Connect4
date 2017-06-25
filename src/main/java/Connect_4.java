@@ -182,7 +182,6 @@ public class Connect_4 {
         while(i>-1 &j<myframe[0].length){
             if(myframe[i][j]==playernr){
             sum+=myframe[i][j];}
-            System.out.println(sum+" "+myframe[i][j]);
             i--;
             j++;
             }
@@ -191,7 +190,6 @@ public class Connect_4 {
         while(z<myframe.length &y>-1){
             if(myframe[z][y]==playernr){
             sum+=myframe[z][y];}
-            System.out.println(sum+" "+myframe[z][y]);
             z++;
             y--;
         }
