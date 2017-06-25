@@ -55,7 +55,6 @@ public class Connect_4 {
         addChipPlayer1(column);
         evaluateGameStatusColumn(column,1);
         evaluateGameStatusRows(column,1);
-        evaluateGameStatusRowLeft(column,1);
         evaluateGameStatusDiagonal(column, 1);
         drawOutput();
     }
@@ -79,7 +78,6 @@ public class Connect_4 {
         addChipPlayer2(column);
         evaluateGameStatusColumn(column,2);
         evaluateGameStatusRows(column,2);
-        evaluateGameStatusRowLeft(column,2);
         evaluateGameStatusDiagonal(column, 2);
         drawOutput();
     }
