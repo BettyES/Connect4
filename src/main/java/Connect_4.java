@@ -206,24 +206,24 @@ public class Connect_4 {
         //the idea is to go as far to the lower left as possible and start counting. The same
         // has to be written for the other direction
 
-        int startR_i = i-startR;
+        int startR_i = i+startR;
         int startR_j = j+startR;
 
         for(int num=0;num<4;num++){
-            if(startR_i+num>=0 && startR_j-num<=myframe[0].length){
-                if(myframe[startR_i+num][startR_j-num]==playernr){
-                    sum+= myframe[startR_i-+sum][startR_j-num];
-                    System.out.println("SUM "+sum);
+            if(startR_i-num>=0 && startR_j-num>=0){
+                if(myframe[startR_i-num][startR_j-num]==playernr){
+                    sumR+= myframe[startR_i-sum][startR_j-num];
+                    System.out.println("SUMR "+sumR);
                 }}
         }
 
 
         if(playernr==1){
-            if(sum==4) {
+            if(sum==4 || sumR==4) {
                 gameStatus = "winner";
             }
         }else{
-            if(sum==8){
+            if(sum==8 || sumR==8){
                 gameStatus =  "winner";
             }
         }
