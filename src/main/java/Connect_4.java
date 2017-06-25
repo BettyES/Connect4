@@ -163,35 +163,7 @@ public class Connect_4 {
     }
 
     /**
-     * Evaluation of the game status: is row to the left complete?;
-     * @param playernr is the player number
-     * @param column column selected by player
-     */
-
-    public static void evaluateGameStatusRowLeft(int column,int playernr){
-        int i = latestRow;
-        int j = column;
-        int sum = 0;
-        for(int num=0;num<4;num++){
-            if(j-num>=0){
-                if(myframe[i][j-num]==playernr){
-                    sum+= myframe[i][j-num];
-                }
-                System.out.println(j+ " "+ sum+ " "+ num);}
-        }
-        if(playernr==1){
-            if(sum==4) {
-                gameStatus = "winner";
-            }
-        }else{
-            if(sum==8){
-                gameStatus =  "winner";
-            }
-        }
-    }
-
-    /**
-     * Evaluation of the game status: is row to the right complete?;
+     * Evaluation of the game status: is a row complete?;
      * @param playernr is the player number
      * @param column column selected by player
      */
@@ -290,8 +262,9 @@ public class Connect_4 {
      */
 
     public static void commsWinner(int playernr){
+        String star = "\u2605";
         System.out.println();
-        System.out.println("Congratulations!");
+        System.out.println("Congratulations! "+star+star+star);
         System.out.println();
         System.out.println("###################################");
         System.out.println("######                       ######");
