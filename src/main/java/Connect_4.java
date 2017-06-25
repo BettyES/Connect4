@@ -53,8 +53,9 @@ public class Connect_4 {
             column = in.nextInt();
         }
         addChipPlayer1(column);
-        evaluateGameStatusColumns(column,1);
-        evaluateGameStatusRows(1);
+        evaluateGameStatusColumn(column,1);
+        evaluateGameStatusRows(column,1);
+        evaluateGameStatusRowLeft(column,1);
         evaluateGameStatusDiagonal(column, 1);
         drawOutput();
     }
@@ -76,8 +77,9 @@ public class Connect_4 {
             column = in.nextInt();
         }
         addChipPlayer2(column);
-        evaluateGameStatusColumns(column,2);
-        evaluateGameStatusRows(2);
+        evaluateGameStatusColumn(column,2);
+        evaluateGameStatusRows(column,2);
+        evaluateGameStatusRowLeft(column,2);
         evaluateGameStatusDiagonal(column, 2);
         drawOutput();
     }
@@ -124,50 +126,6 @@ public class Connect_4 {
 
     }
 
-    /**
-     * Evaluation of the game status: is column complete?;
-     * @param column selected by the player
-     * @param playernr is the player number
-     */
-
-    public static void evaluateGameStatusColumns(int column, int playernr){
-        int sum = 0;
-        for(int i = myframe.length-1; i>=0;i--){
-            if(myframe[i][column]==playernr){
-            sum += myframe[i][column];
-        }}
-        if(playernr==1){
-            if(sum==4){
-                gameStatus =  "winner";
-            }
-        }else{
-            if(sum==8){
-                gameStatus =  "winner";
-            }
-        }
-    }
-
-    /**
-     * Evaluation of the game status: is row complete?;
-     * @param playernr is the player number
-     */
-
-    public static void evaluateGameStatusRows(int playernr){
-        int sum = 0;
-        for(int j = myframe[0].length-1; j>=0;j--){
-         if(myframe[latestRow][j]==playernr){
-            sum += myframe[latestRow][j];
-        }}
-        if(playernr==1){
-            if(sum==4) {
-                gameStatus = "winner";
-            }
-        }else{
-            if(sum==8){
-                gameStatus =  "winner";
-            }
-        }
-    }
 
     /**
      * Evaluation of the game status: is diagonal complete?;
@@ -192,6 +150,107 @@ public class Connect_4 {
             sum+=myframe[z][y];}
             z++;
             y--;
+        }
+        if(playernr==1){
+            if(sum==4) {
+                gameStatus = "winner";
+            }
+        }else{
+            if(sum==8){
+                gameStatus =  "winner";
+            }
+        }
+    }
+
+    /**
+     * Evaluation of the game status: is row to the left complete?;
+     * @param playernr is the player number
+     * @param column column selected by player
+     */
+
+    public static void evaluateGameStatusRowLeft(int column,int playernr){
+        int i = latestRow;
+        int j = column;
+        int sum = 0;
+        for(int num=0;num<4;num++){
+            if(j-num>=0){
+                if(myframe[i][j-num]==playernr){
+                    sum+= myframe[i][j-num];
+                }
+                System.out.println(j+ " "+ sum+ " "+ num);}
+        }
+        if(playernr==1){
+            if(sum==4) {
+                gameStatus = "winner";
+            }
+        }else{
+            if(sum==8){
+                gameStatus =  "winner";
+            }
+        }
+    }
+
+    /**
+     * Evaluation of the game status: is row to the right complete?;
+     * @param playernr is the player number
+     * @param column column selected by player
+     */
+
+    public static void evaluateGameStatusRows(int column,int playernr){
+        int i = latestRow;
+        int j = column;
+        int sum = 0;
+        int start = column;
+        boolean startFound = false;
+        for(int num=0;num<4;num++){
+            if(j+num<myframe[0].length){
+                System.out.println("ha");
+                if(j+num==myframe[0].length-1 || myframe[i][j+num+1]!=playernr && !startFound){
+                    System.out.println("he?");
+                    start += num;
+                    startFound = true;
+                }
+            }
+        }
+
+        for(int num=0;num<4;num++){
+            if(start-num>=0){
+                System.out.println(start-num);
+                if(myframe[i][start-num]==playernr){
+                    sum+= myframe[i][start-num];
+                    System.out.println("SUM "+sum);
+                }}
+        }
+        System.out.println(start + "sum" + sum);
+
+        if(playernr==1){
+            if(sum==4) {
+                gameStatus = "winner";
+            }
+        }else{
+            if(sum==8){
+                gameStatus =  "winner";
+            }
+        }
+    }
+
+
+    /**
+     * Evaluation of the game status: is column complete?;
+     * @param column selected by the player
+     * @param playernr is the player number
+     */
+
+    public static void evaluateGameStatusColumn(int column,int playernr){
+        int i = latestRow;
+        int j = column;
+        int sum = 0;
+
+        for(int num=0;num<4;num++){
+            if(i+num<myframe.length){
+            if(myframe[i+num][j]==playernr){
+                sum+= myframe[i+num][j];
+            }}
         }
         if(playernr==1){
             if(sum==4) {
