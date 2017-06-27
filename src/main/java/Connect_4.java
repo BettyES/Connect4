@@ -131,9 +131,87 @@ public class Connect_4 {
      * @param playernr is the player number
      */
 
+
     public static void evaluateGameStatusDiagonal(int column,int playernr){
 
+        //the idea is to go as far to the lower left as possible and start counting. The same
+        // has to be written for the other direction
+        int i = latestRow;
+        int j = column;
+        int sum = 0;
+        int start = 0;
+        boolean startFound = false;
+        for(int num=0;num<4;num++){
+            if(j-num>=0 && i+num<myframe.length && !startFound){
+//                System.out.println("ha" +num);
+//                System.out.println(j-num);
+//                System.out.println(myframe[0].length);
+                if(j-num==0 || i+num==myframe.length-1){
+                    start += num;
+                    startFound = true;
+                } else if (j-num>0 && i+num<myframe.length-1) {
+                    if (myframe[i+num+1][j-num-1]!=playernr) {
+                        start += num;
+                        startFound = true;
+                    }
+                }
+            }}
+
+        int start_i = i+start;
+        int start_j = j-start;
+
+        for(int num=0;num<4;num++){
+            if(start_i-num>=0 && start_j+num<=myframe[0].length-1){
+                if(myframe[start_i-num][start_j+num]==playernr){
+                    sum+= myframe[start_i-num][start_j+num];
+                    System.out.println("SUM "+sum);
+                }}
+        }
+
+        // check other diagonal direction: go as far to the lower RIGHT as possible and start counting.
+        int sumR = 0;
+        int startR = 0;
+        boolean startFoundR = false;
+        for(int num=0;num<4;num++){
+            if(j+num<myframe[0].length && i+num<myframe.length && !startFoundR){
+//                System.out.println("ha" +num);
+//                System.out.println(j-num);
+//                System.out.println(myframe[0].length);
+                if(j+num==myframe[0].length-1 || i+num==myframe.length-1){
+                    startR += num;
+                    startFoundR = true;
+                } else if (j+num<myframe[0].length && i+num<myframe.length-1) {
+                    if (myframe[i+num+1][j+num+1]!=playernr) {
+                        startR += num;
+                        startFoundR = true;
+                    }
+                }
+            }}
+
+        int startR_i = i+startR;
+        int startR_j = j+startR;
+
+        for(int num=0;num<4;num++){
+            if(startR_i-num>=0 && startR_j-num>=0){
+                if(myframe[startR_i-num][startR_j-num]==playernr){
+                        sumR+= myframe[startR_i-num][startR_j-num];
+                        System.out.println("SUMR "+sumR);
+                }
+            }
+        }
+
+
+        if(playernr==1){
+            if(sum==4 || sumR==4) {
+                gameStatus = "winner";
+            }
+        }else{
+            if(sum==8 || sumR==8){
+                gameStatus =  "winner";
+            }
+        }
     }
+
 
     /**
      * Evaluation of the game status: is a row complete?;
@@ -149,9 +227,9 @@ public class Connect_4 {
         boolean startFound = false;
         for(int num=0;num<4;num++){
             if(j+num<myframe[0].length && !startFound){
-                System.out.println("ha" +num);
-                System.out.println(j+num);
-                System.out.println(myframe[0].length);
+//                System.out.println("ha" +num);
+//                System.out.println(j+num);
+//                System.out.println(myframe[0].length);
                 if(j+num==myframe[0].length-1 || myframe[i][j+num+1]!=playernr ){
                     start += num;
                     startFound = true;
