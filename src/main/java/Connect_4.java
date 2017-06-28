@@ -23,13 +23,13 @@ public class Connect_4 {
                 if(gameStatus=="winner"){
                     commsWinner(1);
                 }
-                }else{
+            }else{
                 Player2(in);
                 if(gameStatus=="winner"){
                     commsWinner(2);
                 }
-                }
-                round++;
+            }
+            round++;
         }
 
     }
@@ -55,7 +55,7 @@ public class Connect_4 {
         addChipPlayer1(column);
         evaluateGameStatusColumn(column,1);
         evaluateGameStatusRows(column,1);
-        //evaluateGameStatusDiagonal(column, 1);
+        evaluateGameStatusDiagonal(column, 1);
         drawOutput();
     }
 
@@ -78,11 +78,11 @@ public class Connect_4 {
         addChipPlayer2(column);
         evaluateGameStatusColumn(column,2);
         evaluateGameStatusRows(column,2);
-        //evaluateGameStatusDiagonal(column, 2);
+        evaluateGameStatusDiagonal(column, 2);
         drawOutput();
     }
 
-      /**
+    /**
      * adds a Chip to coordinates provided by player 1;
      * @param column is the number of the column
      */
@@ -194,8 +194,8 @@ public class Connect_4 {
         for(int num=0;num<4;num++){
             if(startR_i-num>=0 && startR_j-num>=0){
                 if(myframe[startR_i-num][startR_j-num]==playernr){
-                        sumR+= myframe[startR_i-num][startR_j-num];
-                        System.out.println("SUMR "+sumR);
+                    sumR+= myframe[startR_i-num][startR_j-num];
+                    System.out.println("SUMR "+sumR);
                 }
             }
         }
@@ -271,9 +271,9 @@ public class Connect_4 {
 
         for(int num=0;num<4;num++){
             if(i+num<myframe.length){
-            if(myframe[i+num][j]==playernr){
-                sum+= myframe[i+num][j];//issue if there is a  2 in between he will still continue to count
-            }}
+                if(myframe[i+num][j]==playernr){
+                    sum+= myframe[i+num][j];//issue if there is a  2 in between he will still continue to count
+                }}
         }
         if(playernr==1){
             if(sum==4) {
