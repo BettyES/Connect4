@@ -164,7 +164,7 @@ public class Connect_4 {
             if(start_i-num>=0 && start_j+num<=myframe[0].length-1){
                 if(myframe[start_i-num][start_j+num]==playernr){
                     sum+= myframe[start_i-num][start_j+num];
-                    System.out.println("SUM "+sum);
+//                    System.out.println("SUM "+sum);
                 }}
         }
 
@@ -195,7 +195,7 @@ public class Connect_4 {
             if(startR_i-num>=0 && startR_j-num>=0){
                 if(myframe[startR_i-num][startR_j-num]==playernr){
                     sumR+= myframe[startR_i-num][startR_j-num];
-                    System.out.println("SUMR "+sumR);
+//                    System.out.println("SUMR "+sumR);
                 }
             }
         }
@@ -241,10 +241,10 @@ public class Connect_4 {
             if(start-num>=0){
                 if(myframe[i][start-num]==playernr){
                     sum+= myframe[i][start-num];
-                    System.out.println("SUM "+sum);
+ //                   System.out.println("SUM "+sum);
                 }}
         }
-        System.out.println(start + "sum" + sum);
+//        System.out.println(start + "sum" + sum);
 
         if(playernr==1){
             if(sum==4) {
@@ -333,7 +333,14 @@ public class Connect_4 {
         System.out.println(" --- --- --- --- --- --- ---");
         for(int i=0;i<myframe.length;i++){
             for(int j=0;j<myframe[0].length;j++){
-                System.out.print("| "+myframe[i][j]+" ");
+                if(myframe[i][j]==0){
+                    System.out.print("| "+" "+" ");
+                }else if(myframe[i][j]==1){
+                    System.out.print("| "+"\u2764"+" ");
+                }else{
+                    System.out.print("| "+"\u2605"+" ");
+                }
+
             }System.out.println("|");
             System.out.println(" --- --- --- --- --- --- ---");
         }
